@@ -1,0 +1,139 @@
+.rectangle1{
+    width: 50%;
+    height: 50%;
+    background-image: url("./photos/Rectangle7.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    transform: rotate(108.234deg);
+    position: fixed;
+    left: -20%;
+    top: 50%;
+    translate: 0 -50%;
+    filter: drop-shadow(0 -50px 50px black);
+}
+
+.rectangle2{
+    background-image: url("./photos/Rectangle7.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    transform: rotate(-169.034deg);
+    width: 50%;
+    height: 50%;
+    position: fixed;
+    top: -25%;
+    left: 60%;
+    translate: -50% 0;
+    filter: drop-shadow(0 -50px 50px black);
+}
+
+.rectangle3{
+    background-image: url("./photos/Rectangle7.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    transform: rotate(-84.681deg);
+    width: 50%;
+    height: 50%;
+    position: fixed;
+    top: 30%;
+    left: 100%;
+    translate: -50% 0;
+    filter: drop-shadow(0 -50px 50px black);
+}
+
+.background{
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    filter: blur(15px);
+    z-index: -1;
+}
+
+.header{
+    width: 100%;
+    height: 10%;
+    background-color: rgba(255, 255, 255, 0.007);
+    /* backdrop-filter: blur(12px); */
+    display: flex;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.075);
+    justify-content: center;
+    align-items: center;
+    z-index: 2;
+}
+
+#bar{
+    width: 40%;
+    height: 60%;
+    background-color: transparent;
+    border-radius: 50px;
+    border: 1px solid rgba(255, 255, 255, 0.185);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.buttonbar{
+    background-color: transparent;
+    border: none;
+    color: white;
+    cursor: pointer;
+    border-radius: 15px;
+    padding: 8px 15px;
+    margin-left: 2px;
+}
+
+.buttonbar:hover{
+    background-color: rgba(255, 255, 255, 0.082);
+}
+
+.buttonbar:active{
+    background-color: rgba(255, 255, 255, 0.103);
+}
+
+.buttonbar1{
+    background-color: transparent;
+    border: none;
+    color: white;
+    cursor: pointer;
+    border-radius: 15px;
+    padding: 8px 15px;
+}
+
+.buttonbar1:hover{
+    background-color: rgba(255, 255, 255, 0.082);
+}
+
+.buttonbar1:active{
+    background-color: rgba(255, 255, 255, 0.103);
+}
+
+
+.buttonbarhelp{
+    background-color: transparent;
+    border: none;
+    color: white;
+    cursor: pointer;
+    border-radius: 15px;
+    padding: 8px 15px;
+    margin-right: 2px;
+}
+
+.buttonbarhelp:hover{
+    background-color: rgba(255, 255, 255, 0.082);
+}
+
+.buttonbarhelp         :active{
+    background-color: rgba(255, 255, 255, 0.103);
+}
+
+#fil{
+    z-index: 3;
+}
+
+.svg{
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    opacity: 0.1;
+    filter: blur(0.5px);
+}
