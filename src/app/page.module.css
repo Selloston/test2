@@ -137,3 +137,23 @@
     opacity: 0.1;
     filter: blur(0.5px);
 }
+
+.cursor{
+    width: 40px;
+    height: 40px;
+    background-image: url("./photos/pack2662\ \(1\).png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: absolute;
+    z-index: 999;
+}
+
+.cursorhover{
+    width: 2%;
+    height: 4.5%;
+    background-image: url("./photos/arrow2662\ \(1\).png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    z-index: 999;
+    display: none;
+}
