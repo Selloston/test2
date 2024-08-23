@@ -1,0 +1,138 @@
+.Header{
+    width: 100%;
+    height: 10%;
+    background-color: white;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 5px;
+    border-bottom: 2px solid rgb(172, 172, 172);
+    position: sticky;
+    top: 0;
+    left: 0;
+    z-index: 2;
+}
+
+.logo{
+    height: 100%;
+    text-decoration: none;
+    color: black;
+    display: flex;
+    align-items: center;
+}
+
+.SearchBar{
+    height: 100%;
+    width: 400px;
+    display: flex;
+    align-items: center;
+}
+
+.CenterInput{
+    display: flex;
+    height: 70%;
+    width: 90%;
+    align-items: center;
+    border-radius: 15px 0 0 15px;
+    border: 1px solid rgb(197, 197, 197);
+}
+
+.CenterInput button{
+    border: none;
+    border-radius: 15px 15px 15px 15px;
+    width: 30px;
+    height: 100%;
+    cursor: pointer;
+    font-size: 20px;
+    background-color: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.CenterInput button:hover{
+    background-color: rgb(206, 206, 206);
+}
+
+.CenterInput button:active{
+    background-color: rgb(179, 179, 179);
+}
+
+.SearchBox{
+    height: 100%;
+    width: 100%;
+    border-radius: 15px 0 0 15px;
+    border: none;
+    padding: 5px;
+    font-size: 17px;
+}
+
+.SearchBox:focus{
+    border: none;
+    outline: none;
+}
+
+.Search{
+    height: 100%;
+    width: 100%;
+    border: 1px solid rgb(197, 197, 197);
+    border-radius: 0 15px 15px 0;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+}
+
+.titleSearch{
+    display: flex;
+    height: 70%;
+    width: 20%;
+    position: relative;
+    text-decoration: none;
+}
+
+.Acconte{
+    width: 50px;
+    height: 50px;
+    background-color: rgb(168, 168, 168);
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.titleAcconte{
+    display: flex;
+    width: 50px;
+    height: 50px;
+}
+
+.menu{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+    transition: all 0.5s;
+    font-size: 30px;
+}
+
+.muneo:hover{
+    background-color: rgba(0, 0, 0, 0.267);
+}
+
+.menucontanerNone{
+    display: none;
+}
+
+.menucontanerFlex{
+    display: flex;
+    width: 150px;
+    height: 100%;
+    background-color: black;
+    position: fixed;
+    margin-left: 150px;
+    top: 0;
+    right: 0;
+    z-index: 1;
+}

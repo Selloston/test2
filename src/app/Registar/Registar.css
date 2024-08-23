@@ -1,0 +1,119 @@
+.bodyRegistar{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: url("./photos/top-view-pink-keyboard-with-copyspace.jpg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+
+.contaner{
+    width: 400px;
+    height: 500px;
+    background-color: transparent;
+    border: 1px solid rgba(104, 104, 104, 0.274);
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    backdrop-filter: blur(10px);
+}
+
+.contanerinput{
+    width: 100%;
+    height: 80%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.contaneremailregistar{
+    width: 80%;
+    height: 8%;
+    margin-bottom: 20px;
+}
+
+.contanerpasswordregistar{
+    width: 80%;
+    height: 8%;
+    margin-bottom: 20px;
+    margin-top: 10px;
+}
+
+.contanerpasswordconfarm{
+    width: 80%;
+    height: 8%;
+    margin-bottom: 20px;
+    margin-top: 10px;
+}
+
+.emailRegistar{
+    width: 100%;
+    height: 100%;
+    border: none;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    font-size: 17px;
+    padding: 5px;
+}
+
+.emailRegistar:focus{
+    outline: groove 1px rgb(0, 255, 0);
+}
+
+.passwordRegistar{
+    width: 100%;
+    height: 100%;
+    border: none;
+    border-radius: 5px;
+    font-size: 17px;
+    padding: 5px;
+    margin-bottom: 20px;
+}
+
+
+.passwordRegistar:focus{
+    outline: groove 1px rgb(0, 255, 0);
+}
+
+.passwordconfarm{
+    width: 100%;
+    height: 100%;
+    border: none;
+    border-radius: 5px;
+    font-size: 17px;
+    padding: 5px;
+    margin-bottom: 20px;
+}
+
+.passwordconfarm:focus{
+    outline: groove 1px rgb(0, 255, 0);
+}
+
+.Registar{
+    width: 80%;
+    height: 8%;
+    border-radius: 5px;
+    background-color: rgb(50, 50, 253);
+    color: white;
+    border: none;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+.Registar:active{
+    background-color: rgb(40, 40, 214);
+}
+
+.Link{
+    text-decoration: none;
+    color: blue;
+}
+
+.Link:active{
+    color: #2f2fff;
+}
