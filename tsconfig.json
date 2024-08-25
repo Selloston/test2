@@ -21,6 +21,6 @@
       "@/*": ["./src/*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "src/app/viidos/[id].tsx", "src/app/viidos/page.tsx"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "src/app/viidos/[id].tsx", "src/app/viidos/page.tsx", "src/app/api/posts.js", "src/app/Registar/page.tsx"],
   "exclude": ["node_modules"]
 }

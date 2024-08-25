@@ -1,44 +1,46 @@
-'use client'
+'use client';
 
-//import all assets
-import Link from "next/link"
-import "./Header.css"
-import { useState, useRef } from "react"
+import Link from 'next/link';
+import { useState, useEffect, useRef } from 'react';
+import { auth } from '@/app/firebase'; // تأكد من المسار الصحيح
+import { onAuthStateChanged, signOut, User } from 'firebase/auth';
+import './Header.css';
 
-//The default function
-const Header = () => {
+const Header: React.FC = () => {
+    const [user, setUser] = useState<User | null>(null);
+    const [inputValue, setInputValue] = useState<string>('');
+    const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
+    const inputRef = useRef<HTMLInputElement>(null);
+    const menuRef = useRef<HTMLDivElement>(null);
 
-    let [inputValue, setinputValue] = useState("");
-    let isclickmuneo = false;
+    useEffect(() => {
+        const unsubscribe = onAuthStateChanged(auth, (user) => {
+            setUser(user);
+        });
 
-    let inputRef = useRef(null)
-    let menuRef = useRef(null)
+        return () => unsubscribe();
+    }, []);
 
-    let Delet = () => {
-        if(inputValue !== "")
-        {
-            setinputValue("");
-            inputRef.current.focus();
+    const handleDelet = () => {
+        if (inputValue !== '') {
+            setInputValue('');
+            inputRef.current?.focus();
+        } else {
+            inputRef.current?.focus();
         }
-        else
-        {
-            inputRef.current.focus();
-        }
-        FocusEvent
-    }
+    };
 
-    let clickmenu = () => 
-    {
-        if(isclickmuneo)
-        {
-            isclickmuneo =false;
-            menuRef.current.className = "menucontanerNone"
+    const handleClickMenu = () => {
+        setIsMenuOpen(!isMenuOpen);
+    };
+
+    const handleLogout = async () => {
+        try {
+            await signOut(auth);
+        } catch (error) {
+            console.error('Sign out error:', (error as Error).message);
         }
-        else{
-            isclickmuneo =true;
-            menuRef.current.className = "menucontanerFlex"
-        }
-    }
+    };
 
     return (
         <>
@@ -46,30 +48,54 @@ const Header = () => {
                 <Link className="logo" href="/">The Logo</Link>
                 <div className="SearchBar">
                     <div className="CenterInput">
-                        <button onClick={Delet}>x</button>
-                        <input ref={inputRef} value={inputValue} onChange={(e) => {setinputValue(e.target.value)}} type="input" className="SearchBox" placeholder="Search..." list="videos" />
+                        <button onClick={handleDelet}>x</button>
+                        <input
+                            ref={inputRef}
+                            value={inputValue}
+                            onChange={(e) => setInputValue(e.target.value)}
+                            type="input"
+                            className="SearchBox"
+                            placeholder="Search..."
+                            list="videos"
+                        />
                         <datalist id="videos">
                             <option>طريقه مضمونه WeLinkIt كيف تربح من</option>
-                            <option>"اغرب حادث حصل بحياتي شاهد قبل الحذف</option>
-                            <option>"ليه يا تره الناس غريبه؟</option>
-                            <option>"سيره الصحابه عليهم السلام</option>
-                            <option>"فديو محظور لا تتدخل لا ينصح للقلوب الضعيفه</option>
+                            <option>اغرب حادث حصل بحياتي شاهد قبل الحذف</option>
+                            <option>ليه يا تره الناس غريبه؟</option>
+                            <option>سيره الصحابه عليهم السلام</option>
+                            <option>فديو محظور لا تتدخل لا ينصح للقلوب الضعيفه</option>
                             <option>how to make website with zero code</option>
                             <option>Are You Okey?</option>
                             <option>666 احظر من رقم</option>
                         </datalist>
                     </div>
-                    <abbr className="titleSearch" title="Search"><button className="Search">Search</button></abbr>
+                    <abbr className="titleSearch" title="Search">
+                        <button className="Search">Search</button>
+                    </abbr>
                 </div>
-                <Link className="Acconte" href="/Accont"><abbr className="titleAcconte" title="Acconte"></abbr></Link>
-                <button className="menu" onClick={clickmenu}>=</button>
+                {user ? (
+                    <div className="profile-section">
+                        <Link href="/profile">
+                            <img
+                                src={user.photoURL || '/default-profile.png'}
+                                alt="Profile"
+                                className="profile-image"
+                            />
+                        </Link>
+                        <button onClick={handleLogout} className="logout-button">Logout</button>
+                    </div>
+                ) : (
+                    <Link className="Link" href="/Login">
+                        Login
+                    </Link>
+                )}
+                <button className="menu" onClick={handleClickMenu}>=</button>
             </div>
-            <div className="menucontanerNone" ref={menuRef}>
-                
+            <div className={isMenuOpen ? "menucontanerFlex" : "menucontanerNone"} ref={menuRef}>
+                {/* محتوى القائمة هنا */}
             </div>
         </>
-    )
-}
+    );
+};
 
-//expotr the default function
 export default Header;

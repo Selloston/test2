@@ -1,37 +1,86 @@
 'use client'
 
-//import all assets
+// Import all assets
 import Link from 'next/link'
 import './Registar.css'
+import { useState } from 'react'
+import { createUserWithEmailAndPassword } from "firebase/auth";
+import { app, auth } from "../firebase"
+import { useRouter } from 'next/navigation'
 
-//The default function
-const page = () => {
+// The default function
+const Page = () => {
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+    const [confirmPassword, setConfirmPassword] = useState("");
+    const [error, setError] = useState("");
+    const router = useRouter();
+    
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        
+        if (password !== confirmPassword) {
+            setError("Passwords do not match!");
+            return;
+        }
+        
+        createUserWithEmailAndPassword(auth, email, password)
+            .then((userCredential) => {
+                // Signed up 
+                const user = userCredential.user;
+                console.log("User signed up:", user);
+                setError(""); // Clear any previous errors
+                router.push('/');
+                // ...
+            })
+            .catch((error) => {
+                const errorCode = error.code;
+                const errorMessage = error.message;
+                setError(errorMessage);
+                // ...
+            });
+    }
+
     return (
         <>
             <div className="bodyRegistar">
                 <div className="contaner">
-                    <h1>Registar</h1>
-                    <div className="contanerinput">
+                    <h1>Register</h1>
+                    <form onSubmit={handleSubmit} className="contanerinput">
                         <div className="contaneremailregistar">
                             <h3>Email</h3>
-                            <input className='emailRegistar' type="email" />
+                            <input 
+                                className='emailRegistar' 
+                                type="email" 
+                                onChange={(e) => setEmail(e.target.value)}  
+                            />
                         </div>
                         <div className="contanerpasswordregistar">
                             <h3>Password</h3>
-                            <input className='passwordRegistar' type="password" />
+                            <input 
+                                className='passwordRegistar' 
+                                type="password" 
+                                onChange={(e) => setPassword(e.target.value)}  
+                            />
                         </div>
                         <div className="contanerpasswordconfarm">
-                            <h3>ConfarmPassword</h3>
-                            <input className='passwordconfarm' type="password" />
+                            <h3>Confirm Password</h3>
+                            <input 
+                                className='passwordconfarm' 
+                                type="password" 
+                                onChange={(e) => setConfirmPassword(e.target.value)}  
+                            />
                         </div>
-                        <input className='Registar' type="submit" value="Registar" />
-                    </div>
-                    <p>Do you have acconte? <span><Link className='Link' href="/Login">Login</Link></span></p>
+                        <input className='Registar' type="submit" value="Register" />
+                        {error && <p className="error">{error}</p>}
+                    </form>
+                    <p>Do you have an account? <span><Link className='Link' href="/Login">Login</Link></span></p>
                 </div>
             </div>
         </>
     )
 }
 
-//expotr the default function
-export default page
+// Export the default function
+export default Page
